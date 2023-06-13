@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using System.Timers;
 
 
 namespace Lesson_3
@@ -58,10 +59,15 @@ namespace Lesson_3
 				int totalColumn = Questions.GetLength(0);
 				int userScore = 0;
 
+
 				#region Identifying questions and answers
 
 				do
 				{
+					while (Console.KeyAvailable) // This is waiting for the sleep time to end.and it does not save the keys or print them on the screen.
+					{
+						Console.ReadKey(true);
+					}
 
 					randomAnswerIndexA = random.Next(1, totalRow);
 
@@ -113,7 +119,7 @@ namespace Lesson_3
 
 
 
-					Thread.Sleep(250);
+					Thread.Sleep(700);
 					Console.ResetColor();
 					Console.Clear();
 
@@ -146,6 +152,12 @@ namespace Lesson_3
 					Console.Write(c);
 					Thread.Sleep(60);
 				}
+
+				while (Console.KeyAvailable) // This is waiting for the sleep time to end.and it does not save the keys or print them on the screen.
+				{
+					Console.ReadKey(true);
+				}
+
 				Console.WriteLine("Press any key to get to menu . . ." , Console.ForegroundColor = ConsoleColor.Red);
 				Console.ReadKey();
 
